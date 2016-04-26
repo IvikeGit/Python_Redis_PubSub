@@ -12,13 +12,16 @@ class ChannelService:
     def __init__(self):
         self._rdb = redis.StrictRedis(host = settings.SERVER_HOST, port = settings.SERVER_PORT, password = settings.SERVER_PASSWORD, db=0)
 
-    def runChannel(self, startVal, endVal):
+    def runChannel(self):
          try:
+            counter = 0
 
-            for num in range(startVal, endVal):
+            while True:
                 time.sleep(0.5)
-                self._rdb.publish('test', num);
-                if settings.DEBUG: print '"test" channel raised {0}'.format(num)
+                counter +=1
+                message = format('{0} published on "test" channel', counter)
+                self._rdb.publish('test', message);
+                if settings.DEBUG: print message
 
             self._rdb.publish('test', 'KILL');
 
@@ -27,4 +30,4 @@ class ChannelService:
 
 
 if __name__ == '__main__':
-    ChannelService().runChannel(1, 100)
+    ChannelService().runChannel()
