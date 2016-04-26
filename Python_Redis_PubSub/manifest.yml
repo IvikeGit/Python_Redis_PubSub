@@ -1,0 +1,7 @@
+applications:
+- name: PubSub
+  memory: 128M
+  host: pubsub
+  buildpack: https://github.com/cloudfoundry/buildpack-python.git
+  services:
+    - redis_test
