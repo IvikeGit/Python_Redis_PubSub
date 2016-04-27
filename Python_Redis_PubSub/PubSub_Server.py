@@ -16,10 +16,10 @@ class ChannelService:
          try:
             counter = 0
 
-            while True:
+            while counter <= 1000:
                 time.sleep(0.5)
                 counter +=1
-                message = format('{0} published on "test" channel', counter)
+                message = '{0} published on "test" channel'.format(counter)
                 self._rdb.publish('test', message);
                 if settings.DEBUG: print message
 
