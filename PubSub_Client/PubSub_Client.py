@@ -25,13 +25,13 @@ class Listener(threading.Thread):
         self._pubsub.subscribe(channels)
 
     def work(self, item):
-        print item['channel'], ":", item['data']
+         logging.info('Cought: {0} {1}'.format(item['message'], item['data']))
 
     def run(self):
         for item in self._pubsub.listen():
             if item['data'] == "KILL":
                 self.pubsub.unsubscribe()
-                logging.info('Listener unsubscribed from {0}'.format(item['data']))
+                logging.info('Listener unsubscribed from {0}'.format(item['channel']))
                 break
             else:
                 self.work(item)

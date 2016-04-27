@@ -18,7 +18,7 @@ class ChannelService:
 
     def runChannel(self):
          try:
-            seconds = 6000
+            seconds = 60
             cnumber = 1
             logging.info('Running redis service on port :%s host: %s', settings.SERVER_HOST, settings.SERVER_PORT)
 
@@ -27,7 +27,7 @@ class ChannelService:
                 time.sleep(1)
                 #creating channel and message
                 channel = 'TestChannel' + str(cnumber)
-                message = 'Message on [{0}]'.format(channel)
+                message = 'New message'
                 #publishing
                 self._rdb.publish(channel, message)
 
