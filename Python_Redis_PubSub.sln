@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PubSub_Server", "Python_Redis_PubSub\PubSub_Server.pyproj", "{1031F94E-F211-4AF0-8E1C-47D35312198A}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PubSub_Client", "PubSub_Client\PubSub_Client.pyproj", "{8CC0EEAE-4517-4370-8BF3-8B33875896EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1031F94E-F211-4AF0-8E1C-47D35312198A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1031F94E-F211-4AF0-8E1C-47D35312198A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CC0EEAE-4517-4370-8BF3-8B33875896EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CC0EEAE-4517-4370-8BF3-8B33875896EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

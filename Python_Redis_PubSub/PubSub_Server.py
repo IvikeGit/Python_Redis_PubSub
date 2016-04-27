@@ -10,24 +10,34 @@ class ChannelService:
     _rdb = None
     
     def __init__(self):
-        # setup the logging    
+        # setup the logging
         logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
         # initaite db
         self._rdb = redis.StrictRedis(host = settings.SERVER_HOST, port = settings.SERVER_PORT, password = settings.SERVER_PASSWORD, db=0)
 
     def runChannel(self):
          try:
-            counter = 0
+            seconds = 60
+            cnumber = 1
             logging.debug('Running redis service on port :%s host: %s', settings.SERVER_HOST, settings.SERVER_PORT)
 
-            while counter <= 60:
+            #start publishing
+            while seconds > 0 :
                 time.sleep(1)
-                counter +=1
-                message = '{0} published on "test" channel'.format(counter)
-                self._rdb.publish('test', message);
+                #creating channel and message
+                channel = 'TestChannel' + str(cnumber)
+                message = 'This message was published on [{0}]'.format(channel)
+                self._rdb.publish(channel, message)
                 logging.debug(message)
+                seconds -= 1
+                cnumber = 1 if cnumber == 3 else cnumber + 1
 
-            self._rdb.publish('test', 'KILL');
+
+            #kill channels
+            self._rdb.publish('test1', 'KILL')
+            self._rdb.publish('test2', 'KILL')
+            self._rdb.publish('test3', 'KILL')
 
          except Exception:
             logging.warning('Error!', exc_info=True)
