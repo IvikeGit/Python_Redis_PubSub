@@ -18,21 +18,22 @@ class ChannelService:
 
     def runChannel(self):
          try:
-            seconds = 60
+            seconds = 6000
             cnumber = 1
-            logging.debug('Running redis service on port :%s host: %s', settings.SERVER_HOST, settings.SERVER_PORT)
+            logging.info('Running redis service on port :%s host: %s', settings.SERVER_HOST, settings.SERVER_PORT)
 
             #start publishing
             while seconds > 0 :
                 time.sleep(1)
                 #creating channel and message
                 channel = 'TestChannel' + str(cnumber)
-                message = 'This message was published on [{0}]'.format(channel)
+                message = 'Message on [{0}]'.format(channel)
+                #publishing
                 self._rdb.publish(channel, message)
-                logging.debug(message)
+
+                logging.info(message)
                 seconds -= 1
                 cnumber = 1 if cnumber == 3 else cnumber + 1
-
 
             #kill channels
             self._rdb.publish('test1', 'KILL')
