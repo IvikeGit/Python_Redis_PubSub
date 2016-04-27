@@ -1,7 +1,7 @@
 applications:
-- name: PubSub_Server
+- name: PubSub_Client
   memory: 128M
-  host: pubsub_server
+  host: pubsub_client
   buildpack: https://github.com/cloudfoundry/buildpack-python.git
   services:
     - redis_test

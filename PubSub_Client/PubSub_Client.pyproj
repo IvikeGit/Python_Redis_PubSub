@@ -33,6 +33,9 @@
     <Compile Include="runserver.py" />
     <Compile Include="PubSub_Client\__init__.py" />
     <Compile Include="PubSub_Client\views.py" />
+    <Compile Include="settings.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PubSub_Client\" />
@@ -43,6 +46,8 @@
     <Folder Include="PubSub_Client\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".cfignore" />
+    <Content Include="manifest.yml" />
     <Content Include="requirements.txt" />
     <Content Include="PubSub_Client\static\content\bootstrap.css" />
     <Content Include="PubSub_Client\static\content\bootstrap.min.css" />
@@ -66,8 +71,6 @@
     <Content Include="PubSub_Client\static\scripts\respond.js" />
     <Content Include="PubSub_Client\static\scripts\respond.min.js" />
     <Content Include="PubSub_Client\static\scripts\_references.js" />
-    <Content Include="PubSub_Client\templates\about.html" />
-    <Content Include="PubSub_Client\templates\contact.html" />
     <Content Include="PubSub_Client\templates\index.html" />
     <Content Include="PubSub_Client\templates\layout.html" />
   </ItemGroup>
