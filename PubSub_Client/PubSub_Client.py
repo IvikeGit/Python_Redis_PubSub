@@ -25,7 +25,10 @@ class Listener(threading.Thread):
         self._pubsub.subscribe(channels)
 
     def work(self, item):
-         logging.info('Cought: {0} {1}'.format(item['message'], item['data']))
+        channel = item['channel']
+        message = item['data']
+        logging.info('Event on: {0}'.format(channel))
+        logging.info('Message: "{0}" \n'.format(message))
 
     def run(self):
         for item in self._pubsub.listen():
@@ -38,5 +41,6 @@ class Listener(threading.Thread):
 
 
 if __name__ == '__main__':
-    client = Listener(['TestChannel1','TestChannel2','TestChannel3' ])
+    #Start listener thread on two channels
+    client = Listener(['TestChannel1','TestChannel2', 'TestChannel3'])
     client.start()
