@@ -22,7 +22,7 @@ class Listener(threading.Thread):
 
         #creating pubsub object and subscribe on the channels
         self._pubsub = self._rdb.pubsub()
-        self._pubsub.subscribe(channels)
+        self._pubsub.psubscribe(channels)
 
     def work(self, item):
         channel = item['channel']
@@ -42,5 +42,5 @@ class Listener(threading.Thread):
 
 if __name__ == '__main__':
     #Start listener thread on two channels
-    client = Listener(['TestChannel1','TestChannel2', 'TestChannel3'])
+    client = Listener(['TestChannel*'])
     client.start()

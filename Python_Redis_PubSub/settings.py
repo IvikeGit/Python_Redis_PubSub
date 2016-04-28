@@ -1,4 +1,4 @@
-import os
+from os import environ
 #testdata = {
 # "VCAP_SERVICES": {
 #  "redis-1": [
@@ -53,8 +53,10 @@ SERVER_PORT = 6379
 SERVER_PASSWORD = 'Valami123456'
 
 if not DEBUG:
-    SERVER_HOST = '10.72.6.22'
-    SERVER_PORT = 46415
+    #SERVER_HOST = '10.72.6.22'
+    #SERVER_PORT = 46415
+    SERVER_HOST = environ.get('VCAP_APP_HOST')
+    SERVER_PORT = environ.get('VCAP_APP_PORT')
     SERVER_PASSWORD = '4d4a1000-f1c5-446c-b730-45a44edd3e6d'
     #sys_json = os.getenv('VCAP_SERVICES')
     #SERVER_HOST = sys_json['redis-1'][0]['credentials']['host']

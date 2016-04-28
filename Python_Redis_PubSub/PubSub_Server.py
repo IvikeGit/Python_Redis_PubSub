@@ -2,6 +2,7 @@ import redis
 import logging
 import json
 import settings
+from datetime import datetime
 import time
 
 class ChannelService:
@@ -15,24 +16,23 @@ class ChannelService:
 
         # initaite db
         self._rdb = redis.StrictRedis(host = settings.SERVER_HOST, port = settings.SERVER_PORT, password = settings.SERVER_PASSWORD, db=0)
+        logging.info('Running redis service on port :%s host: %s', settings.SERVER_HOST, settings.SERVER_PORT)
+
 
     def runChannel(self):
          try:
-            seconds = 60000
             cnumber = 1
-            logging.info('Running redis service on port :%s host: %s', settings.SERVER_HOST, settings.SERVER_PORT)
 
             #start publishing
-            while seconds > 0 :
+            while True:
                 time.sleep(1)
                 #creating channel and message
                 channel = 'TestChannel' + str(cnumber)
-                message = 'Message raised on ' + channel
+                message = 'Sample message raised at ' + str(time.strftime('%H:%M:%S'))
                 #publishing
                 self._rdb.publish(channel, message)
 
                 logging.info(message)
-                seconds -= 1
                 cnumber = 1 if cnumber == 3 else cnumber + 1
 
             #kill channels
@@ -46,3 +46,4 @@ class ChannelService:
 
 if __name__ == '__main__':
     ChannelService().runChannel()
+
