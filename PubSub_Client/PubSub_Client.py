@@ -42,5 +42,5 @@ class Listener(threading.Thread):
 
 if __name__ == '__main__':
     #Start listener thread on two channels
-    client = Listener(['TestChannel*'])
+    client = Listener('TestChannel*')
     client.start()

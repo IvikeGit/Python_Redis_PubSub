@@ -14,11 +14,11 @@ class ChannelService:
         # setup the logging
         logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
-        # initaite db
+        # initiate db
+        logging.info('Running redis service on port :%s host: %s pw: %s', settings.SERVER_HOST, settings.SERVER_PORT, settings.SERVER_PASSWORD)
         self._rdb = redis.StrictRedis(host = settings.SERVER_HOST, port = settings.SERVER_PORT, password = settings.SERVER_PASSWORD, db=0)
-        logging.info('Running redis service on port :%s host: %s', settings.SERVER_HOST, settings.SERVER_PORT)
 
-
+        
     def runChannel(self):
          try:
             cnumber = 1
