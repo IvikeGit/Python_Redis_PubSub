@@ -1,14 +1,15 @@
-import redis
-import logging
-import json
-import settings
-from datetime import datetime
-import time
+import redis, logging, json, settings
+import datetime, time
+from pytz import timezone
 
 class ChannelService:
-
-    ##redis db
+    #redis db
     _rdb = None
+
+    #datetime format
+    _fmt = "%Y-%m-%d %H:%M:%S"
+    #local time zone
+    _tz = 'Europe/Budapest'
     
     def __init__(self):
         # setup the logging
@@ -18,7 +19,12 @@ class ChannelService:
         logging.info('Running redis service on port :%s host: %s pw: %s', settings.SERVER_HOST, settings.SERVER_PORT, settings.SERVER_PASSWORD)
         self._rdb = redis.StrictRedis(host = settings.SERVER_HOST, port = settings.SERVER_PORT, password = settings.SERVER_PASSWORD, db=0)
 
-        
+    #converts UTC date time to the local one
+    def getLocalTime(self):
+        tz_utc = datetime.datetime.now(timezone('UTC'))
+        tz_local = tz_utc.astimezone(timezone(self._tz))
+        return tz_local.strftime(self._fmt)
+
     def runChannel(self):
          try:
             cnumber = 1
@@ -28,7 +34,7 @@ class ChannelService:
                 time.sleep(1)
                 #creating channel and message
                 channel = 'TestChannel' + str(cnumber)
-                message = 'Sample message raised at ' + str(time.strftime('%H:%M:%S'))
+                message = 'Sample message raised at ' + self.getLocalTime()
                 #publishing
                 self._rdb.publish(channel, message)
 
