@@ -1013,3 +1013,8 @@ C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Micro
 2016-04-27T14:58:14: Saving group "D:\Projects\Python_Redis_PubSub\PubSub_Client\env\Lib\site-packages\redis"
 2016-04-27T14:58:14: End of group "D:\Projects\Python_Redis_PubSub\PubSub_Client\env\Lib\site-packages\redis"
 2016-04-27T14:58:14: Deleting 0 files
+
+2016-05-02T15:34:36: Start analysis
+2016-05-02T15:34:36: [WARNING] Library was set explicitly - skipping path detection
+2016-05-02T15:34:36: IncludeModulesFromModulePath = win32com
+2016-05-02T15:34:36: Deleting 0 files

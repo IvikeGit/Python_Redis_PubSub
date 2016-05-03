@@ -1,9 +1,9 @@
 import json
 from os import environ
 
-DEBUG = False
+DEBUG = True
 
-SERVER_HOST = '10.201.11.14'
+SERVER_HOST = '10.201.11.23'
 SERVER_PORT = 6379
 SERVER_PASSWORD = 'Valami123456'
 
