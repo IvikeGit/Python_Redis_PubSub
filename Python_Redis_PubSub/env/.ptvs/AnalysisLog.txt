@@ -6781,3 +6781,8 @@ C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Micro
 2016-05-02T14:13:37: Saving group "D:\Projects\Python_Redis_PubSub\Python_Redis_PubSub\env\Lib\site-packages\pytz"
 2016-05-02T14:13:37: End of group "D:\Projects\Python_Redis_PubSub\Python_Redis_PubSub\env\Lib\site-packages\pytz"
 2016-05-02T14:13:37: Deleting 0 files
+
+2016-05-03T15:28:54: Start analysis
+2016-05-03T15:28:54: [WARNING] Library was set explicitly - skipping path detection
+2016-05-03T15:28:54: IncludeModulesFromModulePath = win32com
+2016-05-03T15:28:54: Deleting 0 files

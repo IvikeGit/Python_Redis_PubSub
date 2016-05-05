@@ -3,7 +3,7 @@ from os import environ
 
 DEBUG = True
 
-SERVER_HOST = '10.201.11.23'
+SERVER_HOST = '10.201.11.250'
 SERVER_PORT = 6379
 SERVER_PASSWORD = 'Valami123456'
 
